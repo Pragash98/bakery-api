@@ -2,10 +2,11 @@
 
 REST API Stands for REPRESENTATIONAL STATE TRANSFER 
 
-REST APIs operate on a simple request/response system
+REST APIs operate on a simple request/response system.
 
 - REQUEST-
-    Client can make a request using http methods
+    Client can make a request using http methods.
+  
 These methods are: 
 GET, POST, PUT, PATCH, DELETE, HEAD, TRACE, OPTIONS, CONNECT 
 
@@ -14,7 +15,6 @@ HTTP REQUEST CONTAINS:
     1)METHOD 
     2)HTTP HEADERS
     3)BODY 
-
 
 - RESPONSE-
     Server returns a resonse with an http status code 
