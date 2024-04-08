@@ -6,6 +6,8 @@ const usercontroller = require("../controller/user_controller")
 router.use(express.json());
 
 router.post('/create_user',usercontroller.reguser)
+router.get("/me", usercontroller.usersMe);
+
 // router.get('/viewbyid/:id',verifyadmin,admincontroller.viewbyidadmin)
 // router.get('/view_users',verifyadmin,usercontroller.viewusers)
 // router.get('/view_admin',verifyadmin,admincontroller.viewadmin)
