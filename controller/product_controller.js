@@ -3,8 +3,11 @@ const Order = require("../models/placeorder");
 const Cart = require("../models/cart");
 const Category = require("../models/category");
 const { query } = require("express");
+const fs = require('fs');
 
 exports.createproduct = async(req,res) => {
+    const fileBuffer = fs.readFileSync(req.file.path);
+    const base64File = fileBuffer.toString('base64');
     //  const { product_name } = req.body;
     //  const { price } = req.body;
     //  const itemImage = 'http://localhost:4000/images/' + req.file.filename;
@@ -12,7 +15,7 @@ exports.createproduct = async(req,res) => {
      const products = new Product({
         product_name:req.body.product_name,
         price:req.body.price,
-        itemImage:'http://localhost:4000/images/' + req.file.filename,
+        itemImage:base64File,
         categories:
             req.body.category      
      })
@@ -27,6 +30,8 @@ exports.createproduct = async(req,res) => {
 exports.viewproduct = async(req,res) =>{
     try{
         const products = await Product.find().populate('categories').exec();
+        const imageDataBuffer = Buffer.from(products[8].itemImage);
+        const base64Image = imageDataBuffer.toString('base64');
         res.status(200).json(products);
      
     } catch (err) {
@@ -47,8 +52,12 @@ exports.updateproduct = async(req,res) =>{
             query.product_name = req.body.product_name
         if(req.body.price)
             query.price = req.body.price
-        if(req.file)
-            query.itemImage = 'http://localhost:4000/images/'+req.file.filename
+        if(req.file){
+            const fileBuffer = fs.readFileSync(req.file.path);
+            const base64File = fileBuffer.toString('base64');
+            query.itemImage = base64File;
+
+        }
         const update_product = await Product.findByIdAndUpdate(req.params.id,
             { 
                 "$set":query,

@@ -6,6 +6,7 @@ const productRouter = require("./routes/product_route")
 const userRouter = require("./routes/user_route")
 const cartRouter = require("./routes/cart_route")
 const categoryRouter =  require("./routes/category_route")
+const cors = require('cors');
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ const connect = async ()=>{
     }
 }
 
+app.use(cors());
 app.use("/api/admin",adminRouter)
 app.use("/api/product",productRouter)
 app.use("/api/user",userRouter)
