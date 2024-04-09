@@ -3,9 +3,12 @@ const router = express.Router();
 const usercontroller = require("../controller/user_controller")
 // const verifyadmin = require('../middleware/verify_admin_token')
 // const usercontroller = require("../controller/user_controller")
+const storage = require("../helpers/storage")
+
+
 router.use(express.json());
 
-router.post('/create_user',usercontroller.reguser)
+router.post('/create_user',storage,usercontroller.reguser)
 router.get("/me", usercontroller.usersMe);
 
 // router.get('/viewbyid/:id',verifyadmin,admincontroller.viewbyidadmin)
