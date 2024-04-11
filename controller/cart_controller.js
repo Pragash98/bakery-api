@@ -1,6 +1,6 @@
-const Product = require("../models/product")
-const Cart = require("../models/cart");
-const { update } = require("../models/product");
+const Product = require("../mongodb/models/product")
+const Cart = require("../mongodb/models/cart");
+const { update } = require("../mongodb/models/product");
 
 exports.addTocart = async(req,res) => {
 	try {

@@ -10,7 +10,7 @@ const productschema = new mongoose.Schema({
     },
     itemImage: {
         type: String,
-        required: true
+        required: false
     },
     categories:{
             type :[ mongoose.Schema.Types.ObjectId],

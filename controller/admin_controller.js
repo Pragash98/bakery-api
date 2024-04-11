@@ -1,4 +1,4 @@
-const Admins = require("../models/admin")
+const Admins = require("../mongodb/models/admin")
 const bcrypt = require("bcrypt")
 const webtoken = require("jsonwebtoken")
 const dotenv = require("dotenv")

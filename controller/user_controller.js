@@ -1,4 +1,4 @@
-const Users = require("../models/user")
+const Users = require("../mongodb/models/user")
 const bcrypt = require("bcrypt")
 const webtoken = require("jsonwebtoken")
 const dotenv = require("dotenv")
@@ -7,24 +7,24 @@ const axios = require("axios");
 dotenv.config();
 
 exports.reguser = async (req, res) => {
-    try {
+	try {
 		const saltRounds = await bcrypt.genSalt(5);
-        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-        
-        const username = req.body.password;
-        const email = req.body.email
-        const phone = req.body.phone
-        const userreg = new Users({
-            username: username,
-            password: hashedPassword,
-            email: email,
-            phone: phone
-        });
-        const saveduser = await userreg.save();
-        res.status(200).json(saveduser);
-    } catch (err) {
-        res.status(500).json(err);
-    }
+		const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+		
+		const username = req.body.password;
+		const email = req.body.email
+		const phone = req.body.phone
+		const userreg = new Users({
+			username: username,
+			password: hashedPassword,
+			email: email,
+			phone: phone
+		});
+		const saveduser = await userreg.save();
+		res.status(200).json(saveduser);
+	} catch (err) {
+		res.status(500).json(err);
+	}
 }
 
 exports.loginuser = async (req,res) =>{
