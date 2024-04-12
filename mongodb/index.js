@@ -2,12 +2,6 @@ const entityRoute = require("../config/resource");
 
 exports.findAllRows = async (entity,populateArr,queryObj,limit,offset,sortObj) => {
     const result = {};
-    // console.log("entity",entity);
-    // console.log("populateArr",populateArr);
-    // console.log("queryObj",queryObj);
-    // console.log("limit",limit);
-    // console.log("offset",offset);
-    // console.log("sortObj",sortObj);
     return new Promise((resolve, reject) => {
         entityRoute[entity]
             .find(queryObj, null, {

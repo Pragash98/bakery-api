@@ -23,6 +23,8 @@ router.put('/cart/removefromcart',verifyuser,cartcontroller.removeFromCart)
 router.get("/:entitypath/all", entityController.findAll);
 router.get('/:entitypath/admin/all',verifyadmin,entityController.findAllAdmin);
 router.get('/:entitypath/admin/all/:id',verifyuser,entityController.viewUserOrderById)
+router.get('/user/:entitypath/:id',entityController.findById)
+
 router.post('/admin/:entitypath/create',storage,verifyadmin,entityController.createRow)
 router.post('/user/:entitypath/create',verifyuser,entityController.createRowByUser)
 router.put('/admin/:entitypath/update/:id',storage,verifyadmin,entityController.updaterow)
